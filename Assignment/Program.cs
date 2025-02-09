@@ -21,10 +21,34 @@
             //{
             //    Console.WriteLine(i);
             //}
-            
+
             #endregion
 
-            
+            #region  q2
+            Stack<char> stack = new Stack<char>();
+            string q= "[()]{ }";
+
+            for (int i = 0; i < q.Length; i++)
+            {
+                
+                if (q[i] =='(' || q[i]=='[' || q[i]=='{')
+                    stack.Push(q[i]);
+                else if (q[i]==')' && stack.Peek()=='(' )
+                    stack.Pop();
+                else if (q[i] == ']' && stack.Peek() == '[' )
+                    stack.Pop();
+                else if (q[i] == '}' && stack.Peek() == '{' )
+                    stack.Pop();
+                else
+                    break;
+            }
+            if(stack.Count == 0) 
+                Console.WriteLine("balanced");
+            else
+                Console.WriteLine("not balanced");
+
+            #endregion
+
         }
     }
 }
